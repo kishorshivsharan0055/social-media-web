@@ -7,9 +7,11 @@ interface Props
 	> {
 	label?: string;
 	containerClass?: string;
+	placeholderText?: string;
 }
 const Input: React.FC<Props> = (props) => {
-	const { containerClass, className, label, ...inputProps } = props;
+	const { containerClass, className, label, placeholderText, ...inputProps } =
+		props;
 	return (
 		<div className={`flex flex-col ${containerClass}`}>
 			{label && (
@@ -25,6 +27,7 @@ const Input: React.FC<Props> = (props) => {
 				{...inputProps}
 				id={inputProps.name}
 				required
+				placeholder={placeholderText}
 				className={`${
 					className || ""
 				} bg-mgray-lighter rounded px-4 w-full h-12 overflow-hidden outline-none`}

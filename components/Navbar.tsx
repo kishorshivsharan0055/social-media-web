@@ -1,30 +1,31 @@
-import React, { useState, useRef } from "react";
-import useOnClickOutside from "../utils/useOnClickOutside";
 import Link from "next/link";
-import { withUrqlClient } from "next-urql";
-import { createUrqlClient } from "../utils/createUrqlClient";
-import { isServer } from "../utils/isServer";
+import React, { useRef, useState } from "react";
+import useOnClickOutside from "../utils/useOnClickOutside";
+import { useAuthState } from "react-firebase-hooks/auth";
+import firebase from "../utils/firebaseClient";
 
-const Navbar: React.FC<any> = () => {
+const Navbar: React.FC = () => {
 	const [navbarOpen, setNavbarOpen] = useState(false);
+	const [user, loading, error] = useAuthState(firebase.auth());
 
 	const navbar = useRef(null);
 	useOnClickOutside(navbar, () => setNavbarOpen(false));
 	const toggleNavbar = () => {
 		setNavbarOpen(!navbarOpen);
 	};
+
 	return (
 		<>
 			<div
 				ref={navbar}
-				className={`fixed select-none z-40 w-full h-20 xl:h-24 flex flex-col justify-start xl:flex-row xl:items-center shadow-lg bg-white px-12 md:px-20 lg:px-32 overflow-hidden ${
+				className={` sticky top-0  select-none z-40 w-full h-20 xl:h-24 flex flex-col justify-start xl:flex-row xl:items-center shadow-lg bg-white px-12 md:px-20 lg:px-32 overflow-hidden ${
 					navbarOpen ? `nav-bar-open` : `nav-bar`
 				}`}
 			>
 				<div className="my-2 flex items-center xl:flex-grow">
 					<Link href="/">
 						<a className="font-semibold text-2xl md:text-4xl flex-grow">
-							Instagram
+							Social Media
 						</a>
 					</Link>
 					<div
@@ -36,16 +37,59 @@ const Navbar: React.FC<any> = () => {
 						<div />
 					</div>
 				</div>
+
 				<div
 					className={`xl:mt-0 ${
 						navbarOpen ? `flex` : `hidden xl:flex`
-					} space-y-3 xl:space-y-0 flex-col xl:flex-row xl:space-x-8`}
+					} space-y-3 xl:space-y-0 flex-col xl:flex-row xl:space-x-6`}
 				>
-					<Link href="/forbuyers">
-						<a className="font-normal text-md md:text-lg">
-							Account
-						</a>
+					<Link href="/">
+						<img src="/home.png" className="h-6 w-6" />
 					</Link>
+
+					{!loading && user && (
+						<div className="flex flex-row xl:space-x-6">
+							<Link href="/chatlist">
+								<img src="/messenger.png" className="h-6 w-6" />
+							</Link>
+
+							<Link href="/profile">
+								<img src="/add.png" className="h-6 w-6" />
+							</Link>
+						</div>
+					)}
+
+					{!loading && user ? (
+						<div
+							className={`xl:mt-0 ${
+								navbarOpen ? `flex` : `hidden xl:flex`
+							} space-y-3 xl:space-y-0 flex-col xl:flex-row xl:space-x-8`}
+						>
+							<Link href="/profile">
+								<a className="flex items-center space-x-3">
+									{!loading && user?.photoURL && (
+										<img
+											src={user?.photoURL}
+											alt="User"
+											width={20}
+											height={20}
+										/>
+									)}
+									<h2 className="font-normal text-md md:text-lg">
+										{!loading &&
+											user?.displayName &&
+											user?.displayName}
+									</h2>
+								</a>
+							</Link>
+						</div>
+					) : (
+						<Link href="/login">
+							<a className="font-normal text-md md:text-lg">
+								Login
+							</a>
+						</Link>
+					)}
 				</div>
 			</div>
 			<style jsx>{`
@@ -92,4 +136,4 @@ const Navbar: React.FC<any> = () => {
 	);
 };
 
-export default withUrqlClient(createUrqlClient)(Navbar);
+export default Navbar;
