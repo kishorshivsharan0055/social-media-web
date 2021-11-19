@@ -15,50 +15,8 @@ export const StorySlider: React.FC<StorySliderProps> = ({}) => {
 		{}
 	);
 
-	const userData: userType[] = [
-		{
-			img: "https://images.unsplash.com/photo-1633538497312-930a41f435e9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=735&q=80",
-			username: "jack_m12",
-		},
-		{
-			img: "https://images.unsplash.com/photo-1633538497312-930a41f435e9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=735&q=80",
-			username: "jack_m12",
-		},
-		{
-			img: "https://images.unsplash.com/photo-1633538497312-930a41f435e9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=735&q=80",
-			username: "jack_m12",
-		},
-		{
-			img: "https://images.unsplash.com/photo-1633538497312-930a41f435e9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=735&q=80",
-			username: "jack_m12",
-		},
-		{
-			img: "https://images.unsplash.com/photo-1633538497312-930a41f435e9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=735&q=80",
-			username: "jack_m12",
-		},
-		{
-			img: "https://images.unsplash.com/photo-1633538497312-930a41f435e9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=735&q=80",
-			username: "jack_m12",
-		},
-		{
-			img: "https://images.unsplash.com/photo-1633538497312-930a41f435e9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=735&q=80",
-			username: "jack_m12",
-		},
-		{
-			img: "https://images.unsplash.com/photo-1633538497312-930a41f435e9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=735&q=80",
-			username: "jack_m12",
-		},
-		{
-			img: "https://images.unsplash.com/photo-1633538497312-930a41f435e9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=735&q=80",
-			username: "jack_m12",
-		},
-		{
-			img: "https://images.unsplash.com/photo-1633538497312-930a41f435e9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=735&q=80",
-			username: "jack_m12",
-		},
-	];
 	return (
-		<div className="flex flex-row border-2 m-8 p-4 bg-white-900 rounded-10  overflow-x-scroll xl:w-180">
+		<div className="flex flex-row border-2 p-4 bg-white-900 rounded-10 overflow-x-scroll xl:w-180 md:ml-2 md:mr-2 sm:ml-2 sm:mr-4">
 			{stories?.docs?.map((item, index) => (
 				<div
 					className="justify-center items-center space-x-6"

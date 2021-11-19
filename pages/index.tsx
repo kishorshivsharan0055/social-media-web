@@ -23,7 +23,7 @@ export const Home = (): JSX.Element => {
 					<Navbar />
 				</div>
 
-				<div className="mt-10 justify-center items-center xl:ml-60 xl:mr-40 md:ml-2 md:mr-2 sm:ml-2 sm:mr-4">
+				<div className=" flex flex-col mt-10 justify-center items-center xl:ml-60 xl:mr-60 md:ml-2 md:mr-2 sm:ml-2 sm:mr-4">
 					<StorySlider />
 
 					{posts?.docs?.map((item) => (
