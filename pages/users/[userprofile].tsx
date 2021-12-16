@@ -7,6 +7,7 @@ interface profileProps {}
 export const profile: React.FC<profileProps> = ({}) => {
 	const router = useRouter();
 	const [username, setusername] = useState(router.query.product);
+	const [toggletxt, settoggletxt] = useState(false);
 
 	return (
 		<div>
@@ -31,8 +32,19 @@ export const profile: React.FC<profileProps> = ({}) => {
 									{" "}
 									{"mrudula_123"}
 								</h4>
-								<p className="mt-3 text-base leading-relaxed text-gray-300">
-									{" "}
+								<p
+									className={`mt-3 text-base leading-relaxed  ${
+										toggletxt
+											? "text-gray-500"
+											: "text-gray-300"
+									}  rounded-10 cursor-pointer ${
+										toggletxt
+											? "bg-gray-100"
+											: "bg-blue-500"
+									}`}
+									onClick={() => settoggletxt(!toggletxt)}
+								>
+									{toggletxt ? "Request sent" : "Follow"}
 								</p>
 								<p></p>
 							</div>

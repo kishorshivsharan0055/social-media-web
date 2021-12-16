@@ -39,7 +39,9 @@ const addpost: React.FC<addpostProps> = ({}) => {
 					username: firebaseapp.auth().currentUser.displayName,
 					img: imageUrl,
 					caption: caption,
+					like_count: 0,
 					timestamp: firebaseapp.firestore.Timestamp.now(),
+					isLiked: false,
 				})
 				.then(() => {
 					showToast("Post uploaded", "success");

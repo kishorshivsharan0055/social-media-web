@@ -16,7 +16,7 @@ export const StorySlider: React.FC<StorySliderProps> = ({}) => {
 	);
 
 	return (
-		<div className="flex flex-row border-2 p-4 bg-white-900 rounded-10 overflow-x-scroll xl:w-180 md:ml-2 md:mr-2 sm:ml-2 sm:mr-4">
+		<div className="flex flex-row border-2 p-4 bg-white-900 rounded-10 overflow-x-scroll xl:w-180">
 			{stories?.docs?.map((item, index) => (
 				<div
 					className="justify-center items-center space-x-6"
@@ -32,3 +32,5 @@ export const StorySlider: React.FC<StorySliderProps> = ({}) => {
 		</div>
 	);
 };
+
+// xl:w-160 md:ml-2 md:mr-2 sm:ml-2 sm:mr-4 ml-4 mr-4

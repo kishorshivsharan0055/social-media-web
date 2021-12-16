@@ -94,9 +94,15 @@ export const searchuser = (): JSX.Element => {
 						{searchTerm.length > 0 &&
 							searchResult.map((item) => (
 								<Link href={`/users/${item.username}`}>
-									<h3 className="text-left m-4">
-										{item.username}
-									</h3>
+									<div className="flex flex-row cursor-pointer">
+										<img
+											src={item.img}
+											className=" w-12 h-12"
+										/>
+										<h3 className="text-left m-4">
+											{item.username}
+										</h3>
+									</div>
 								</Link>
 							))}
 					</div>
