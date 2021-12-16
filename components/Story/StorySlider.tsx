@@ -1,13 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import firebase from "../../utils/firebaseClient";
+import { ContactUsDialog } from "../ContactUs/ContactUsDialog";
 
 interface StorySliderProps {}
-
-type userType = {
-	img: string;
-	username: string;
-};
 
 export const StorySlider: React.FC<StorySliderProps> = ({}) => {
 	const [stories, storiesLoading, storiesError] = useCollection(
@@ -15,12 +11,24 @@ export const StorySlider: React.FC<StorySliderProps> = ({}) => {
 		{}
 	);
 
+	const [open, setOpen] = useState(false);
+
+	const [imgS, setImgS] = useState("");
+	const [srcS, setSrcS] = useState("");
+	const [nameS, setNameS] = useState("");
+
 	return (
-		<div className="flex flex-row border-2 p-4 bg-white-900 rounded-10 overflow-x-scroll xl:w-180">
+		<div className="flex flex-row border-2 p-4 bg-white-900 rounded-10 overflow-x-scroll">
 			{stories?.docs?.map((item, index) => (
 				<div
-					className="justify-center items-center space-x-6"
+					className="justify-center items-center space-x-6 cursor-pointer"
 					key={index}
+					onClick={() => {
+						setImgS(item.get("img"));
+						setSrcS(item.get("src"));
+						setNameS(item.get("username"));
+						setOpen(true);
+					}}
 				>
 					<img
 						src={item.get("img")}
@@ -29,6 +37,14 @@ export const StorySlider: React.FC<StorySliderProps> = ({}) => {
 					<h3 className="text-10">{item.get("username")}</h3>
 				</div>
 			))}
+
+			<ContactUsDialog
+				open={open}
+				setOpen={setOpen}
+				img={imgS}
+				src={srcS}
+				name={nameS}
+			/>
 		</div>
 	);
 };
