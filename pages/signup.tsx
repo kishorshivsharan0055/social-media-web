@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { withUrqlClient } from "next-urql";
 import Head from "next/head";
 import Link from "next/link";
 import router from "next/router";

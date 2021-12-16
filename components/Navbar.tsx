@@ -44,19 +44,36 @@ const Navbar: React.FC = () => {
 					} space-y-3 xl:space-y-0 flex-col xl:flex-row xl:space-x-6`}
 				>
 					<Link href="/">
-						<img src="/home.png" className="h-6 w-6" />
+						<img
+							src="/home.png"
+							className="h-6 w-6 cursor-pointer"
+						/>
 					</Link>
 
 					{!loading && user && (
-						<div className="flex flex-row xl:space-x-6">
-							<Link href="/chatlist">
-								<img src="/messenger.png" className="h-6 w-6" />
-							</Link>
+						<Link href="/chatlist">
+							<img
+								src="/messenger.png"
+								className="h-6 w-6 cursor-pointer"
+							/>
+						</Link>
+					)}
+					{!loading && user && (
+						<Link href="/addpost">
+							<img
+								src="/add.png"
+								className="h-6 w-6 cursor-pointer"
+							/>
+						</Link>
+					)}
 
-							<Link href="/profile">
-								<img src="/add.png" className="h-6 w-6" />
-							</Link>
-						</div>
+					{!loading && user && (
+						<Link href="/searchuser">
+							<img
+								src="/search.png"
+								className="h-6 w-6 cursor-pointer"
+							/>
+						</Link>
 					)}
 
 					{!loading && user ? (
